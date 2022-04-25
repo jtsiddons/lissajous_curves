@@ -27,7 +27,7 @@ To reduce the amount of frames I generated all the curves in advance, and then l
 To save the animation I need to `convert` the frames to a gif. All frames are saved in `./frames`. I need to run:
 
 ```bash
-convert -delay 1 -loop 0 'frames/*' test.gif
+convert -delay 1 -loop 0 'frames/*' lissajous.gif
 ```
 
-![Lissajous Curves](./test.gif)
+![Lissajous Curves](./lissajous.gif)

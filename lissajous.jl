@@ -60,17 +60,18 @@ for i in 1:10:length(θs)
 		# vlines!(A, [bs[j][1]], linewidth=1, color=lg, linestyle = :dash)
 		lines!(A, [(ls[i][j][1],ls[i][j][2]), (bs[i][n][1], ls[i][j][2])], color=lg, linewidth=0.75, linestyle=:dash)
 		lines!(A, [(bs[i][j][1],bs[i][j][2]), (bs[i][j][1], ls[i][n][2])], color=lg, linewidth=0.75, linestyle=:dash)
+		
+		# Loop through each pair of lines to add to the drawings
+		for k in 1:n
+			lines!(A, curves[j,k,1:i], color=sharecols[k,j], linewidth=2)
+			scatter!(A, (bs[i][k][1], ls[i][j][2]), markersize=10, color=fg)
+		end
 	end
 
 	# Add in current point
 	scatter!(A, ls[i], color=fg, markersize=10)
 	scatter!(A, bs[i], color=fg, markersize=10)
 
-	# Loop through each pair of lines to add to the drawings
-	for j in 1:n, k in 1:n
-		lines!(A, curves[j,k,1:i], color=sharecols[k,j], linewidth=2)
-		scatter!(A, (bs[i][k][1], ls[i][j][2]), markersize=10, color=fg)
-	end
 
 	# Save the frame
 	save(fi, F)
